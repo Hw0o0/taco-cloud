@@ -1,4 +1,4 @@
-package com.tacos.tacocloud;
+package com.tacos.tacocloud.domain;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -8,22 +8,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @RequiredArgsConstructor
+@Table(name = "user")
 public class User implements UserDetails {
-    private static final long serialVersionUTD = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private final String username;
     private final String password;
@@ -32,6 +29,7 @@ public class User implements UserDetails {
     private final String city;
     private final String state;
     private final String zip;
+    @Column(name = "phone")
     private final String phoneNumber;
 
     @Override

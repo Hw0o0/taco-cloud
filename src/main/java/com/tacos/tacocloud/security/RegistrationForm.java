@@ -1,6 +1,6 @@
 package com.tacos.tacocloud.security;
 
-import com.tacos.tacocloud.User;
+import com.tacos.tacocloud.domain.User;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,6 +17,10 @@ public class RegistrationForm {
     private String phone;
 
     public User toUser(PasswordEncoder passwordEncoder){
-        return new User(username, passwordEncoder.encode(password),fullname,street,city,state,zip,phone);
+        // PasswordEncoder를 객체를 사용해서 비밀번호를 암호화 한 후 User 리턴
+
+        return new User(
+                username, passwordEncoder.encode(password),
+                fullname,street,city,state,zip,phone);
     }
 }

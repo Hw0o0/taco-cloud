@@ -35,15 +35,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { //HTTP 보안
                 .authorizeRequests() // 요청에 대한 인증을 설정한다.
                 .antMatchers("/design", "/orders")//"/design"과 "/orders" 경로에 대한 요청을 선택한다
                 .access("hasRole('ROLE_USER')")//"/design"과 "/orders"에 대한 요청은 "ROLE_USER" 역할을 가진 사용자만 접근할 수 있다.
-                .antMatchers("/", "/**").access("permitAll()") // "/"와 그 이외의 모든 경로에 대한 요청은 모든 사용자에게 허용된다.
+                .antMatchers("/", "/**")
+                .access("permitAll()") // "/"와 그 이외의 모든 경로에 대한 요청은 모든 사용자에게 허용된다.
                 //antMatchers의 위치를 바꾸면 design,orders의 요청 효력 없어진다.
+
                 .and()
                 .formLogin()
-                .loginPage("/login");
+                .loginPage("/login")
+                    .defaultSuccessUrl("/design", true) // 로그인 전에 어떤 페이지에 있었던 로그인 성공시 /design 페이지로 이동
+                    .failureUrl("/login?error=true")
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/")
+
+                .and()
+                    .csrf();
     }
+
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception { //사용자 인증 정보를 구성하는 메소드
+        // 커스텀 사용자 명세 서비스
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(encoder());
+        // 인메모리 기반 사용자 스토어 예제
 //        auth.inMemoryAuthentication()
 //                .withUser("user1")
 //                .password("{noop}password1")
@@ -64,8 +80,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { //HTTP 보안
 //                                "where username=?"
 //                )
 //                .passwordEncoder(new BCryptPasswordEncoder());
-        // 커스텀 사용자 명세 서비스
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(encoder());
+
     }
 }

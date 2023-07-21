@@ -1,8 +1,9 @@
-package com.tacos.tacocloud;
+package com.tacos.tacocloud.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import lombok.Data;
 
 import java.util.Date;

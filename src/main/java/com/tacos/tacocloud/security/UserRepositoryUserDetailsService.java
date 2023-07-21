@@ -1,14 +1,12 @@
 package com.tacos.tacocloud.security;
 
-import com.tacos.tacocloud.User;
-import com.tacos.tacocloud.repository.UserRepository;
+import com.tacos.tacocloud.domain.User;
+import com.tacos.tacocloud.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import javax.swing.plaf.PanelUI;
 
 @Service
 public class UserRepositoryUserDetailsService implements UserDetailsService {

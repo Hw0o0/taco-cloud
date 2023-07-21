@@ -1,6 +1,6 @@
 package com.tacos.tacocloud.security;
 
-import com.tacos.tacocloud.repository.UserRepository;
+import com.tacos.tacocloud.data.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +13,7 @@ public class RegistrationController {
     private UserRepository userRepo;
     private PasswordEncoder passwordEncoder;
 
-    public RegistrationController(
-            UserRepository userRepo,PasswordEncoder passwordEncoder){
+    public RegistrationController(UserRepository userRepo,PasswordEncoder passwordEncoder){
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
     }

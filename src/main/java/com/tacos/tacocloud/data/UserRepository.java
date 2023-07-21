@@ -1,6 +1,6 @@
-package com.tacos.tacocloud.repository;
+package com.tacos.tacocloud.data;
 
-import com.tacos.tacocloud.User;
+import com.tacos.tacocloud.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository  extends CrudRepository<User,Long> {

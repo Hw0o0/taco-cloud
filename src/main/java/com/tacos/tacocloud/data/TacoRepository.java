@@ -1,7 +1,6 @@
-package com.tacos.tacocloud.repository;
+package com.tacos.tacocloud.data;
 
-import com.tacos.tacocloud.Taco;
-import org.springframework.data.relational.core.sql.In;
+import com.tacos.tacocloud.domain.Taco;
 import org.springframework.data.repository.CrudRepository;
 
 public interface TacoRepository extends CrudRepository<Taco,Long> {

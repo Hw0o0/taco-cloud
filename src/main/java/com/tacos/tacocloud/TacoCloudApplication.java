@@ -1,6 +1,7 @@
 package com.tacos.tacocloud;
 
-import com.tacos.tacocloud.repository.IngredientRepository;
+import com.tacos.tacocloud.data.IngredientRepository;
+import com.tacos.tacocloud.domain.Ingredient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
